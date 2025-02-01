@@ -1,0 +1,322 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #10b981;
+    --background-color: #f9fafb;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  
+    /* Colores para modo oscuro */
+    --dark-background-color: #181818;
+    --dark-text-color: #f1f1f1;
+    --dark-primary-color: #2563eb;
+    --dark-secondary-color: #10b981;
+    --dark-shadow-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Evitamos scroll horizontal */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+  }
+  
+  /* MENÚ DE NAVEGACIÓN */
+  #menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    z-index: 1100;
+    box-shadow: 0 2px 5px var(--shadow-color);
+  }
+  
+  #menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  #menu ul li {
+    margin: 0 12px;
+  }
+  
+  #menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  #menu ul li a:hover,
+  #menu ul li a.active {
+    color: #ffdd57;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    padding: 10px;
+    margin-top: 60px;
+  }
+  
+  /* Encabezados */
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+  }
+  
+  body.dark-mode h1,
+  body.dark-mode h2 {
+    color: var(--dark-primary-color);
+  }
+  
+  /* Formularios y botones */
+  #uploadForm {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .file-input {
+    position: relative;
+  }
+  
+  input[type="file"] {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  .file-input label {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  
+  .file-input label:hover {
+    background-color: #1e40af;
+    transform: scale(1.05);
+  }
+  
+  button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    font-weight: 500;
+  }
+  
+  button:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+  }
+  
+  body.dark-mode button {
+    background-color: var(--dark-secondary-color);
+  }
+  
+  /* Indicador de carga */
+  .loading-indicator {
+    display: none;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* TABLAS Y GRÁFICOS */
+  .table-box table {
+    font-size: 0.8rem;
+  }
+  
+  .table-box th, 
+  .table-box td {
+    padding: 4px 6px;
+  }
+  
+  /* Tablas con scroll */
+  .table-box {
+    overflow-x: auto;
+    padding: 10px;
+  }
+  
+  /* Ajuste de tamaño de los gráficos generales */
+  .chart-box.full-width canvas {
+    max-height: 200px;
+  }
+  
+  /* Disposición de tablas y gráficos */
+  .tables-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .country-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .table-box,
+  .chart-box {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  body.dark-mode .table-box,
+  body.dark-mode .chart-box {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 10px var(--dark-shadow-color);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+  }
+  
+  th, td {
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+  }
+  
+  body.dark-mode th {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Gráficos */
+  .charts-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .chart-box.full-width {
+    grid-column: 1 / -1;
+  }
+  
+  /* Gráficos de promociones en filas de 2 */
+  .promotion-charts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  /* Ajuste del tamaño de los gráficos */
+  canvas {
+    width: 100% !important;
+    max-height: 200px;
+  }
+  
+  /* Botón para modo oscuro */
+  #darkModeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1200;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #darkModeToggle:hover {
+    background-color: #1e40af;
+    transform: scale(1.05);
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .tables-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tables-container {
+      grid-template-columns: 1fr;
+    }
+    .promotion-charts {
+      grid-template-columns: 1fr;
+    }
+  }
+  

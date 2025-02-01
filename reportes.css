@@ -1,0 +1,221 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #10b981;
+    --background-color: #f9fafb;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --dark-background-color: #181818;
+    --dark-text-color: #f1f1f1;
+    --dark-primary-color: #2563eb;
+    --dark-secondary-color: #10b981;
+    --dark-shadow-color: rgba(0, 0, 0, 0.5);
+    
+    /* Breakpoints */
+    --breakpoint-md: 1024px;
+    --breakpoint-sm: 768px;
+  }
+  
+  html, body { overflow-x: hidden; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+  }
+  
+  /* MENÚ DE NAVEGACIÓN */
+  #menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    z-index: 1100;
+    box-shadow: 0 2px 5px var(--shadow-color);
+  }
+  #menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  #menu ul li { margin: 0 12px; }
+  #menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  #menu ul li a:hover,
+  #menu ul li a.active { color: #ffdd57; }
+  
+  /* Contenedor principal */
+  .container {
+    padding: 10px;
+    margin-top: 60px;
+  }
+  
+  /* Encabezados */
+  header { text-align: center; margin-bottom: 20px; }
+  h1 { font-size: 1.8rem; margin-bottom: 10px; }
+  h2 { font-size: 1.2rem; margin-bottom: 8px; color: var(--primary-color); }
+  body.dark-mode h1, body.dark-mode h2 { color: var(--dark-primary-color); }
+  
+  /* Formularios */
+  #uploadForm {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .file-input { position: relative; }
+  input[type="file"] { position: absolute; left: -9999px; }
+  .file-input label {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  .file-input label:hover { background-color: #1e40af; transform: scale(1.05); }
+  button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: 500;
+  }
+  button:hover { background-color: #059669; transform: scale(1.05); }
+  body.dark-mode button { background-color: var(--dark-secondary-color); }
+  
+  /* Indicador de carga */
+  .loading-indicator { display: none; text-align: center; padding: 15px; }
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Sección de Resumen */
+  .summary-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  .summary-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+  }
+  .summary-box h2 { margin-bottom: 10px; }
+  .summary-box p { font-size: 1.5rem; font-weight: 600; margin: 0; }
+  .skin-breakdown {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  .skin-box { text-align: center; }
+  .skin-box h3 { font-size: 1rem; margin-bottom: 5px; }
+  .skin-box p { font-size: 1.2rem; font-weight: 600; margin: 0; }
+  
+  /* Gráficos */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .chart-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    padding: 15px;
+    text-align: center;
+  }
+  .chart-box h3 { margin-bottom: 10px; font-size: 1.1rem; }
+  .chart-box canvas { width: 100% !important; max-height: 200px; }
+  
+  /* Tabla de Reportes */
+  .table-box {
+    overflow-x: auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    margin-bottom: 20px;
+  }
+  .table-box table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .table-box th, .table-box td { padding: 4px 6px; text-align: center; border-bottom: 1px solid #e2e8f0; }
+  .table-box th { background-color: #f1f5f9; font-weight: 600; }
+  body.dark-mode .table-box { background-color: #2a2a2a; box-shadow: 0 4px 10px var(--dark-shadow-color); }
+  body.dark-mode .table-box th { background-color: #333; color: #fff; }
+  
+  /* Botón de Modo Oscuro */
+  #darkModeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1200;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  #darkModeToggle:hover {
+    background-color: #1e40af;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: var(--breakpoint-md)) {
+    .charts-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: var(--breakpoint-sm)) {
+    .charts-grid { grid-template-columns: 1fr; }
+    .summary-container { flex-direction: column; }
+  }
+  

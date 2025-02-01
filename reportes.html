@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Reportes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reportes.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Librerías para procesar Excel y crear gráficos -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav id="menu">
+    <ul>
+      <li class="logo"><a href="index.html"><i class="fas fa-chart-bar"></i> Promociones</a></li>
+      <li><a href="general.html">General</a></li>
+      <li><a href="reportes.html" class="active">Reportes</a></li>
+    </ul>
+  </nav>
+
+  <!-- Botón para cambiar entre modo claro/oscuro -->
+  <button id="darkModeToggle">🌙 Cambiar a Modo Oscuro</button>
+
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-file-alt"></i> Dashboard de Reportes</h1>
+    </header>
+
+    <!-- Formulario para cargar Excel -->
+    <form id="uploadForm">
+      <div class="file-input">
+        <input type="file" id="excelFile" accept=".xlsx, .xls" required>
+        <label for="excelFile"><i class="fas fa-file-excel"></i> Seleccionar archivo</label>
+      </div>
+      <button type="submit"><i class="fas fa-upload"></i> Generar Reportes</button>
+    </form>
+
+    <!-- Indicador de carga -->
+    <div class="loading-indicator" id="loading">
+      <div class="spinner"></div>
+      <p>Procesando archivo...</p>
+    </div>
+
+    <!-- Sección de Resumen -->
+    <div class="summary-container">
+      <div class="summary-box" id="totalReportes">
+        <h2>Total de Reportes</h2>
+        <p id="totalCount">0</p>
+      </div>
+      <div class="summary-box" id="skinReportes">
+        <h2>Reportes por Skin</h2>
+        <div class="skin-breakdown">
+          <div class="skin-box">
+            <h3>SALVADOR</h3>
+            <p id="skinSalvador">0</p>
+          </div>
+          <div class="skin-box">
+            <h3>GUATEMALA</h3>
+            <p id="skinGuatemala">0</p>
+          </div>
+          <div class="skin-box">
+            <h3>GENERAL</h3>
+            <p id="skinGeneral">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Gráficos -->
+    <div class="charts-grid">
+      <div class="chart-box">
+        <h3>Área</h3>
+        <canvas id="chartArea"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Categoría</h3>
+        <canvas id="chartCategoria"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Prioridad</h3>
+        <canvas id="chartPrioridad"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Estado</h3>
+        <canvas id="chartEstado"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Gestión</h3>
+        <canvas id="chartGestion"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Proveedor</h3>
+        <canvas id="chartProveedor"></canvas>
+      </div>
+    </div>
+
+    <!-- (Opcional) Tabla Detallada de Reportes -->
+    <div class="table-box" id="reportTableBox">
+      <h2>Detalle de Reportes</h2>
+      <div id="reportTableContainer"></div>
+    </div>
+  </div>
+
+  <script src="reportes.js"></script>
+</body>
+</html>
