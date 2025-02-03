@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard de Promociones</title>
+  <title>Comparativo.GP</title>
+  <!-- Fuentes, iconos y librerías -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Librería XLSX para leer Excel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+  <!-- Chart.js para gráficos -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="general.css">
 </head>
 <body>
   <!-- MENÚ DE NAVEGACIÓN -->
@@ -25,13 +28,13 @@
     </ul>
   </nav>
 
-  <!-- Botón para cambiar entre modo claro/oscuro -->
+  <!-- Botón para modo oscuro (alternativo) -->
   <button id="darkModeToggle">🌙 Cambiar a Modo Oscuro</button>
 
-  <!-- CONTENIDO DEL DASHBOARD (Promociones) -->
+  <!-- CONTENIDO DEL DASHBOARD -->
   <div class="container">
     <header>
-      <h1><i class="fas fa-chart-bar"></i> Dashboard de Promociones</h1>
+      <h1><i class="fas fa-chart-bar"></i> Dashboard Comparativo</h1>
     </header>
 
     <form id="uploadForm">
@@ -47,27 +50,19 @@
       <p>Procesando archivo...</p>
     </div>
 
-    <div class="tables-container">
-      <!-- Datos de El Salvador -->
-      <div class="country-container">
-        <div class="table-box">
-          <h2><i class="fas fa-table"></i> Datos de El Salvador</h2>
-          <div id="tableContainer1"></div>
-        </div>
-        <div class="charts-container" id="salvadorCharts"></div>
+    <!-- Contenedores para las dos tablas y los gráficos -->
+    <div class="table-chart-container">
+      <div class="table-box" id="tableContainer1">
+        <h2><i class="fas fa-table"></i> Tabla 1</h2>
       </div>
-
-      <!-- Datos de Guatemala -->
-      <div class="country-container">
-        <div class="table-box">
-          <h2><i class="fas fa-table"></i> Datos de Guatemala</h2>
-          <div id="tableContainer2"></div>
-        </div>
-        <div class="charts-container" id="guatemalaCharts"></div>
+      <div class="table-box" id="tableContainer2">
+        <h2><i class="fas fa-table"></i> Tabla 2</h2>
       </div>
+      <!-- Contenedor para los gráficos individuales y el gráfico comparativo -->
+      <div class="charts-container" id="chartsContainer"></div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="general.js"></script>
 </body>
 </html>

@@ -12,14 +12,19 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- MENÚ DE NAVEGACIÓN -->
-  <nav id="menu">
-    <ul>
-      <li class="logo"><a href="index.html"><i class="fas fa-chart-bar"></i> Promociones</a></li>
-      <li><a href="general.html">General</a></li>
-      <li><a href="reportes.html" class="active">Reportes</a></li>
-    </ul>
-  </nav>
+<!-- MENÚ DE NAVEGACIÓN -->
+<nav id="menu">
+  <ul>
+    <!-- El logo/enlace redirige a la página actual (promociones) -->
+    <li class="logo"><a href="index.html"><i class="fas fa-chart-bar"></i> Promociones</a></li>
+    <li><a href="general.html">Comparativo</a></li>
+    <li><a href="reportes.html">Reportes</a></li>
+    <!-- Botón para cambiar el modo oscuro, integrado en el menú -->
+    <li id="darkModeToggleItem">
+      <button id="darkModeToggle">🌙 Cambiar a Modo Oscuro</button>
+    </li>
+  </ul>
+</nav>
 
   <!-- Botón para cambiar entre modo claro/oscuro -->
   <button id="darkModeToggle">🌙 Cambiar a Modo Oscuro</button>

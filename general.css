@@ -14,9 +14,34 @@
   --dark-shadow-color: rgba(0, 0, 0, 0.5);
 }
 
-/* ===============================
-   MENÚ DE NAVEGACIÓN
-   =============================== */
+/* RESETEOS Y CONFIGURACIONES GENERALES */
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--dark-background-color);
+  color: var(--dark-text-color);
+}
+
 /* MENÚ DE NAVEGACIÓN */
 #menu {
   position: fixed;
@@ -51,8 +76,9 @@
   transition: color 0.3s ease;
 }
 
+#menu ul li a:hover,
 #menu ul li a.active {
-  color: #ffdd57;
+  color: var(--secondary-color);
 }
 
 /* Botón para modo oscuro integrado en el menú */
@@ -76,63 +102,34 @@
   transform: scale(1.05);
 }
 
-/* Reglas comunes */
-html, body { 
-  overflow-x: hidden; 
-}
-
-* { 
-  box-sizing: border-box; 
-}
-
-html { 
-  scroll-behavior: smooth; 
-}
-
-body {
-  font-family: 'Poppins', Arial, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-body.dark-mode {
-  background-color: var(--dark-background-color);
-  color: var(--dark-text-color);
-}
-
-/* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR PRINCIPAL Y ENCABEZADOS */
 .container {
   padding: 10px;
   margin-top: 60px;
 }
 
-/* ENCABEZADOS */
-header { 
-  text-align: center; 
-  margin-bottom: 20px; 
+header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-h1 { 
-  font-size: 1.8rem; 
-  margin-bottom: 10px; 
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
-h2 { 
-  font-size: 1.2rem; 
-  margin-bottom: 8px; 
-  color: var(--primary-color); 
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--primary-color);
 }
 
-body.dark-mode h1, 
-body.dark-mode h2 { 
-  color: var(--dark-primary-color); 
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: var(--dark-primary-color);
 }
 
-/* FORMULARIOS */
+/* FORMULARIO Y ELEMENTOS DE CARGA */
 #uploadForm {
   display: flex;
   justify-content: center;
@@ -141,13 +138,13 @@ body.dark-mode h2 {
   flex-wrap: wrap;
 }
 
-.file-input { 
-  position: relative; 
+.file-input {
+  position: relative;
 }
 
-input[type="file"] { 
-  position: absolute; 
-  left: -9999px; 
+input[type="file"] {
+  position: absolute;
+  left: -9999px;
 }
 
 .file-input label {
@@ -156,7 +153,7 @@ input[type="file"] {
   padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -168,6 +165,7 @@ input[type="file"] {
   transform: scale(1.05);
 }
 
+/* BOTONES GENERALES */
 button {
   background-color: var(--secondary-color);
   color: #fff;
@@ -176,12 +174,12 @@ button {
   border-radius: 6px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
   font-weight: 500;
 }
 
 button:hover {
-  background-color: #059669;
+  background-color: #ffdd57;  /* Un color de hover amarillo para resaltar */
   transform: scale(1.05);
 }
 
@@ -189,11 +187,11 @@ body.dark-mode button {
   background-color: var(--dark-secondary-color);
 }
 
-/* Indicador de carga */
-.loading-indicator { 
-  display: none; 
-  text-align: center; 
-  padding: 15px; 
+/* INDICADOR DE CARGA */
+.loading-indicator {
+  display: none;
+  text-align: center;
+  padding: 15px;
 }
 
 .spinner {
@@ -211,107 +209,22 @@ body.dark-mode button {
   100% { transform: rotate(360deg); }
 }
 
-/* SECCIÓN DE RESUMEN */
-.summary-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-  justify-content: center;
-}
-
-.summary-box {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px var(--shadow-color);
-  padding: 15px;
-  text-align: center;
-  flex: 1;
-  min-width: 200px;
-}
-
-.summary-box h2 {
-  margin-bottom: 10px;
-}
-
-.summary-box p {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-.skin-breakdown {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
-}
-
-.skin-box {
-  text-align: center;
-}
-
-.skin-box h3 {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-.skin-box p {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-/* Gráficos */
-.charts-grid {
+/* CONTENEDORES DE TABLAS Y GRÁFICA */
+.table-chart-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.chart-box {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px var(--shadow-color);
-  padding: 15px;
-  text-align: center;
-}
-
-.chart-box h3 {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.chart-box canvas {
-  width: 100% !important;
-  max-height: 200px;
-}
-
-/* Tabla de Reportes */
+/* Los cuadros que contienen las tablas */
 .table-box {
-  overflow-x: auto;
-  padding: 10px;
   background-color: #fff;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 10px var(--shadow-color);
-  margin-bottom: 20px;
-}
-
-.table-box table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-}
-
-.table-box th, .table-box td {
-  padding: 4px 6px;
-  text-align: center;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.table-box th {
-  background-color: #f1f5f9;
-  font-weight: 600;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  overflow-x: auto;
 }
 
 body.dark-mode .table-box {
@@ -319,24 +232,108 @@ body.dark-mode .table-box {
   box-shadow: 0 4px 10px var(--dark-shadow-color);
 }
 
-body.dark-mode .table-box th {
+/* Contenedor de la gráfica */
+.charts-container {
+  grid-column: 1 / -1;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-mode .charts-container {
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 10px var(--dark-shadow-color);
+}
+
+/* ESTILOS DE TABLAS */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+}
+
+th, td {
+  text-align: center;
+  padding: 4px 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+body.dark-mode th {
   background-color: #333;
   color: #fff;
 }
 
-/* Responsive */
+/* Estilo para la gráfica (canvas) */
+canvas {
+  width: 100% !important;
+  max-height: 200px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .charts-grid {
+  .table-chart-container {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .charts-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .summary-container {
+  /* Ajuste del menú de navegación */
+  #menu ul {
     flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  
+  #menu ul li {
+    margin: 5px 0;
+  }
+  
+  /* Reducir márgenes y paddings en el contenedor principal */
+  .container {
+    padding: 5px;
+    margin-top: 55px;
+  }
+  
+  /* Encabezados: reducir tamaño de fuente */
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  /* Formulario de carga: apilar elementos verticalmente y ocupar todo el ancho */
+  #uploadForm {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  #uploadForm .file-input,
+  #uploadForm button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Reducir padding en las cajas de tablas y gráfica */
+  .table-box,
+  .charts-container {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Reducir altura máxima de la gráfica */
+  canvas {
+    max-height: 150px;
   }
 }

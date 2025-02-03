@@ -1,15 +1,15 @@
 :root {
-  --primary-color: #2563eb;
-  --secondary-color: #10b981;
-  --background-color: #f9fafb;
-  --text-color: #333;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-color: #00783e;  /* Verde principal */
+  --secondary-color: #cb9f38; /* Combinación secundaria */
+  --background-color: #f9fafb; /* Fondo claro */
+  --text-color: #333; /* Color de texto por defecto */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra tenue */
 
   /* Colores para modo oscuro */
   --dark-background-color: #181818;
   --dark-text-color: #f1f1f1;
-  --dark-primary-color: #2563eb;
-  --dark-secondary-color: #10b981;
+  --dark-primary-color: #00783e;  /* Verde principal en modo oscuro */
+  --dark-secondary-color: #cb9f38;
   --dark-shadow-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -80,6 +80,27 @@ body.dark-mode {
   color: #ffdd57;
 }
 
+/* Botón para modo oscuro integrado en el menú */
+#menu li#darkModeToggleItem {
+  margin-left: auto; /* Empuja el botón hacia la derecha */
+}
+
+#menu li#darkModeToggleItem button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#menu li#darkModeToggleItem button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
 /* Contenedor principal */
 .container {
   padding: 10px;
@@ -140,10 +161,9 @@ input[type="file"] {
 }
 
 .file-input label:hover {
-  background-color: #1e40af;
+  background-color: #00783e;
   transform: scale(1.05);
 }
-
 button {
   background-color: var(--secondary-color);
   color: #fff;
@@ -157,7 +177,7 @@ button {
 }
 
 button:hover {
-  background-color: #059669;
+  background-color: #ffdd57;  /* Un color de hover amarillo para resaltar */
   transform: scale(1.05);
 }
 
@@ -283,27 +303,6 @@ canvas {
   max-height: 200px;
 }
 
-/* Botón para modo oscuro */
-#darkModeToggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  padding: 8px 14px;
-  font-size: 14px;
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 1200;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#darkModeToggle:hover {
-  background-color: #1e40af;
-  transform: scale(1.05);
-}
-
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .tables-container {
@@ -336,7 +335,7 @@ canvas {
   /* Reducir márgenes y paddings en el contenedor principal */
   .container {
     padding: 5px;
-    margin-top: 55px; /* Se reduce un poco para dispositivos móviles */
+    margin-top: 55px;
   }
 
   /* Encabezados: reducir tamaño de fuentes */
@@ -361,14 +360,6 @@ canvas {
   #uploadForm button {
     width: 100%;
     text-align: center;
-  }
-
-  /* Botón para modo oscuro: ajustar tamaño y posición */
-  #darkModeToggle {
-    top: 10px;
-    right: 10px;
-    padding: 6px 10px;
-    font-size: 12px;
   }
 
   /* Tablas y cajas de gráficos: reducir padding y ajustar márgenes */
