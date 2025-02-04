@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Aplicación para generar gráficos a partir de archivos Excel.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfica Dayana</title>
+  
+  <!-- Fuentes y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Librerías para Excel y Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="dayana.css">
+</head>
+<body>
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav id="menu">
+    <ul>
+      <!-- Logo o nombre principal -->
+      <li class="logo">
+        <a href="#" aria-label="Inicio">
+          <i class="fas fa-chart-line"></i> Gráfica Dayana
+        </a>
+      </li>
+      
+      <!-- Enlace para ir a silvana.html -->
+      <li>
+        <a href="silvana.html" aria-label="Ir a Silvana">
+          <i class="fas fa-arrow-circle-right"></i> Ir a Silvana
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-chart-line"></i> Gráfica Dayana</h1>
+    </header>
+
+    <!-- Formulario de carga de archivo -->
+    <form id="uploadForm">
+      <div class="file-input">
+        <input type="file" id="excelFile" accept=".xlsx, .xls" required>
+        <label for="excelFile">
+          <i class="fas fa-file-excel"></i> Seleccionar archivo
+        </label>
+      </div>
+      <button type="submit">
+        <i class="fas fa-upload"></i> Generar Gráfica
+      </button>
+    </form>
+
+    <!-- Indicador de carga -->
+    <div class="loading-indicator" id="loading">
+      <div class="spinner"></div>
+      <p>Procesando archivo...</p>
+    </div>
+
+    <!-- Contenedor del gráfico -->
+    <div class="chart-container">
+      <canvas id="balanceChart" aria-label="Gráfico de valores financieros"></canvas>
+    </div>
+  </div>
+
+  <!-- Script principal -->
+  <script src="dayana.js"></script>
+</body>
+</html>

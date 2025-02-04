@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Dashboard para egresos y depósitos en Silvana">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Egresos y Depósitos</title>
+
+  <!-- Fuentes e iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Librerías para Excel y gráficos -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Nuestro CSS -->
+  <link rel="stylesheet" href="silvana.css">
+</head>
+<body>
+
+    <nav id="menu">
+        <ul>
+          <!-- Logo o nombre principal -->
+          <li class="logo">
+            <a href="#" aria-label="Inicio">
+              <i class="fas fa-chart-line"></i> Gráfica silvana
+            </a>
+          </li>
+          
+    <ul>
+      <li><a href="dayana.html" aria-label="Ir a Dayana"><i class="fas fa-arrow-left"></i> Dayana</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-chart-pie"></i> Silvana</h1>
+    </header>
+
+    <!-- Formulario para subir el archivo Excel -->
+    <form id="uploadForm">
+      <div class="file-input">
+        <input type="file" id="excelFile" accept=".xlsx, .xls" required>
+        <label for="excelFile">
+          <i class="fas fa-file-excel"></i> Seleccionar archivo Excel
+        </label>
+      </div>
+      <button type="submit">
+        <i class="fas fa-upload"></i> Procesar Datos
+      </button>
+    </form>
+
+    <!-- Indicador de carga -->
+    <div class="loading-indicator" id="loading">
+      <div class="spinner"></div>
+      <p>Procesando archivo...</p>
+    </div>
+
+    <!-- Gráfico de barras (egresos por fecha) -->
+    <div class="chart-container">
+      <canvas id="egresosChart" aria-label="Gráfico de Egresos por Fecha"></canvas>
+    </div>
+
+    <!-- Gráfico circular/dona (porcentaje por persona) -->
+    <div class="chart-container">
+      <canvas id="depositosPieChart" aria-label="Gráfico de Depósitos por Persona"></canvas>
+    </div>
+  </div>
+
+  <!-- Nuestro JavaScript -->
+  <script src="silvana.js"></script>
+</body>
+</html>

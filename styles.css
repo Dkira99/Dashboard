@@ -217,10 +217,16 @@ body.dark-mode button {
   padding: 4px 6px;
 }
 
-/* Tablas con scroll */
 .table-box {
-  overflow-x: auto;
-  padding: 10px;
+  /* El resto de propiedades que ya tenías... */
+  flex-grow: 1;
+  min-height: 400px;
+  max-height: 100%;
+  /* Antes tenías solo overflow-y, agrega también overflow-x */
+  overflow-x: auto; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Ajuste de tamaño de los gráficos generales */
