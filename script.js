@@ -173,35 +173,53 @@ function generateTotalCharts(table, country, totalColIndex, container) {
   const color = country === 'salvador' ? '#1e3a8a' : '#059669';
   const currency = country === 'salvador' ? 'USD' : 'GTQ';
 
-  const totalData = table.rows
-    .map(row => ({
-      label: row[0],
-      value: parseFloat(row[totalColIndex]) || 0
-    }))
-    .filter(item => item.value > 0);
+  console.log(`Procesando gráfico TOTAL para ${country.toUpperCase()} (Columna total: ${totalColIndex})`);
 
-  if (totalData.length > 0) {
-    const chartId = `${country}Total`;
-    const chartTitle = `TOTAL ${country.toUpperCase()} (${currency})`;
-
-    const chartHTML = `
-      <div class="chart-box full-width">
-        <h2>${chartTitle}</h2>
-        <canvas id="${chartId}"></canvas>
-      </div>
-    `;
-    container.insertAdjacentHTML('afterbegin', chartHTML);
-
-    const newChart = createBarChart(
-      chartId,
-      totalData.map(d => d.label),
-      totalData.map(d => d.value),
-      `Total ${currency}`,
-      color
-    );
-    charts.totals.push(newChart);
+  // Verificamos que la columna total existe y contiene valores numéricos
+  if (totalColIndex < 0 || totalColIndex >= table.headers.length) {
+    console.error(`Error: La columna total (${totalColIndex}) está fuera del rango en ${country}`);
+    return;
   }
+
+  // Extraemos los datos de la columna total
+  const totalData = table.rows.map(row => {
+    const label = row[0] ? row[0].toString().trim() : "Desconocido";
+    const value = parseFloat(row[totalColIndex]) || 0; // Convertir a número, si no es válido, asignar 0
+    return { label, value };
+  }).filter(item => item.value > 0); // Filtrar valores inválidos
+
+  console.log(`Datos para ${country.toUpperCase()} - Total:`, totalData);
+
+  // Si no hay datos válidos, no se genera el gráfico
+  if (totalData.length === 0) {
+    console.warn(`Advertencia: No hay datos válidos para el gráfico total de ${country}`);
+    return;
+  }
+
+  // Limpiar gráficos anteriores si existen
+  const chartId = `${country}Total`;
+  if (charts[chartId]) {
+    charts[chartId].destroy();
+  }
+
+  // Insertar el canvas en el contenedor
+  container.insertAdjacentHTML('afterbegin', `
+    <div class="chart-box full-width">
+      <h2>Total ${country.toUpperCase()} (${currency})</h2>
+      <canvas id="${chartId}"></canvas>
+    </div>
+  `);
+
+  // Crear el gráfico con los datos corregidos
+  charts[chartId] = createBarChart(
+    chartId,
+    totalData.map(d => d.label),
+    totalData.map(d => d.value),
+    `Total ${currency}`,
+    color
+  );
 }
+
 
 /**
  * Crea una tabla HTML a partir de los encabezados y filas.
